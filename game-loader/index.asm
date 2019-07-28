@@ -5,7 +5,7 @@
 ;
 ; Simple Colorwash effect with a SID playing
 ;
-; Tutorial: http://dustlayer.com/c64-coding-tutorials/2013/2/17/a-simple-c64-intro
+; Tutorial: http://dustlayer.coacmem/c64-coding-tutorials/2013/2/17/a-simple-c64-intro
 ; Dustlayer WHQ: http://dustlayer.com
 ;============================================================
 
@@ -18,7 +18,7 @@
 ;============================================================
 
 !cpu 6502
-!to "build/hello_world.prg",cbm    ; output file
+!to "build/devops_loader.prg",cbm    ; output file
 
 ;============================================================
 ; BASIC loader with start address $c000
