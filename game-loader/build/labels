@@ -15,4 +15,4 @@
 	line3	= $c092
 	line1	= $c044
 	init_screen	= $c109	; ?
-	play_music	= $c17e	; ?
+	play_music	= $c181	; ?

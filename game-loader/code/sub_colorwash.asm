@@ -16,6 +16,7 @@ colwash2  ldx #$00        ; load x-register with #$00
 cycle2    ldy color2,x    ; remember color at currently looked color2 table location
           sta color2,x    ; overwrite location with color from accumulator
           sta $d9e0,x     ; ... and write it to Color Ram
+          sta $da30,x     ; ... and write it to Color Ram
           tya             ; transfer our remembered color back to accumulator 
           inx             ; increment x-register to go to next iteraton
           cpx #$26        ; have we gone through 39 iterations yet?
