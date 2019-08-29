@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build -> C64 -> VICE",
+            "label": "Assemble -> C64",
             "type": "shell",
             "windows": {
                 "command": "acme -f cbm -l build/labels -o build/gameloader.prg index.asm && C:/projects/c64/vice/x64.exe -moncommands build/labels build/gameloader.prg"
@@ -28,7 +28,7 @@
             }
         },
         {
-            "label": "build -> C64 -> Pucrunch -> VICE",
+            "label": "Assemble -> Compress -> C64",
             "type": "shell",
             "windows": {
                 "command": "acme -f cbm -l build/labels -o build/gameloader.prg index.asm && bin\\pucrunch build/gameloader.prg build/gameloader.prg && C:/projects/c64/vice/x64.exe -moncommands build/labels build/gameloader.prg",
