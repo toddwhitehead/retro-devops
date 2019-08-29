@@ -1,24 +1,26 @@
 ;============================================================
-; Example Project for C64 Tutorials  
-; Code by actraiser/Dustlayer
-; Music: Ikari Intro by Laxity
+; Retrodevops game-loader demo 
 ;
-; Simple Colorwash effect with a SID playing
+; A simple helloworld demo with a whole of C64 style rubbed all over it.
+; Displays some text messages with colorwash effect and a SID playing
+; for that authentic 1980's vibe.
 ;
-; Tutorial: http://dustlayer.coacmem/c64-coding-tutorials/2013/2/17/a-simple-c64-intro
-; Dustlayer WHQ: http://dustlayer.com
+; Based on excellent tutorial: http://dustlayer.coacmem/c64-coding-tutorials/2013/2/17/a-simple-c64-intro
 ;============================================================
 
 ;============================================================
-; index file which loads all source code and resource files
-;============================================================
-
-;============================================================
-;    specify output file
-;============================================================
+; Setup the output format options here or can be specified as parameters
+; at assemble time
 
 !cpu 6502
-;!to "build/devops_loader.prg",cbm    ; output file
+;!to "build/gameloader.prg",cbm    ; specify output file
+
+;==========================================================
+; LABELS
+
+address_music = $1000 ; loading address for sid tune
+sid_init = $1000      ; init routine for music
+sid_play = $1006      ; play music routine
 
 ;============================================================
 ; BASIC loader with start address $c000
@@ -30,40 +32,22 @@
 * = $c000     				            ; start address for 6502 code
 
 ;============================================================
-;  Main routine with IRQ setup and custom IRQ routine
-;============================================================
+; No concept of project/solutuion file so we include all
+; the other code we need explicitly
 
-!source "code/main.asm"
-
-;============================================================
-;    setup and init symbols we use in the code
-;============================================================
-
-!source "code/setup_symbols.asm"
-
-;============================================================
-; tables and strings of data 
-;============================================================
-
-!source "code/data_static_text.asm"
+!source "code/main.asm"              ; Main routine with IRQ setup and custom IRQ routine
+!source "code/data_static_text.asm"  ; Tables and strings of data 
 !source "code/data_colorwash.asm"
-
-;============================================================
-; one-time initialization routines
-;============================================================
-
-!source "code/init_clear_screen.asm"
+!source "code/init_clear_screen.asm" ; One-time initialization routines
 !source "code/init_static_text.asm"
 
 ;============================================================
 ;    subroutines called during custom IRQ
-;============================================================
 
 !source "code/sub_colorwash.asm"
 !source "code/sub_music.asm"
 
 ;============================================================
 ; load resource files (for this small intro its just the sid)
-;============================================================
 
 !source "code/load_resources.asm"
