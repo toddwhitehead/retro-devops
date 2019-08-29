@@ -18,7 +18,7 @@
 ;============================================================
 
 !cpu 6502
-!to "build/devops_loader.prg",cbm    ; output file
+;!to "build/devops_loader.prg",cbm    ; output file
 
 ;============================================================
 ; BASIC loader with start address $c000
