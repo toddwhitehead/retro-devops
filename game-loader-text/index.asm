@@ -15,13 +15,6 @@
 !cpu 6502
 ;!to "build/gameloader.prg",cbm    ; specify output file
 
-;==========================================================
-; LABELS
-
-address_music = $1000 ; loading address for sid tune
-sid_init = $1000      ; init routine for music
-sid_play = $1006      ; play music routine
-
 ;============================================================
 ; BASIC loader with start address $c000
 ;============================================================
@@ -37,17 +30,9 @@ sid_play = $1006      ; play music routine
 
 !source "code/main.asm"              ; Main routine with IRQ setup and custom IRQ routine
 !source "code/data_static_text.asm"  ; Tables and strings of data 
-!source "code/data_colorwash.asm"
 !source "code/init_clear_screen.asm" ; One-time initialization routines
 !source "code/init_static_text.asm"
 
 ;============================================================
 ;    subroutines called during custom IRQ
 
-!source "code/sub_colorwash.asm"
-!source "code/sub_music.asm"
-
-;============================================================
-; load resource files (for this small intro its just the sid)
-
-!source "code/load_resources.asm"
