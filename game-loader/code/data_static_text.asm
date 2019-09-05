@@ -5,6 +5,6 @@
 
 line1   !scr "     retrodevops.com presents          "
 line2   !scr "   hello world example c64 style       " 
-line3   !scr "      greetings Bbne Azure-devops       "
+line3   !scr "      greetings Bne Azure-devops       "
 ;line3   !scr "    greetings bne azure user group    "
 ;line3   !scr "       greetings ndc sydney           "
