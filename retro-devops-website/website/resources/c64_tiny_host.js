@@ -165,7 +165,7 @@ var Module = {
 			helprequest = new ActiveXObject('Microsoft.XMLHTTP');
 		}
 		helpElement.style.display = 'none';
-		helprequest.open('GET', '/c64/pp_help.php?game=' + Module.lastSnapshot + '&lang=' + lang, true);
+		helprequest.open('GET', 'pp_help.php?game=' + Module.lastSnapshot + '&lang=' + lang, true);
         helprequest.onload = function () {
             if (helprequest.readyState === 4 && helprequest.status === 200) {
                 helpElement.innerHTML = helprequest.responseText;
@@ -202,7 +202,7 @@ var Module = {
 		} else {
 			hirequest = new ActiveXObject('Microsoft.XMLHTTP');
 		}
-		hirequest.open('POST', '/c64/pp_highscore_upload.php', true);
+		hirequest.open('POST', 'pp_highscore_upload.php', true);
 		hirequest.setRequestHeader('Content-type', 'multipart/form-data; boundary=' + boundary);
         hirequest.onreadystatechange = function () {
             if (hirequest.readyState === 4) {

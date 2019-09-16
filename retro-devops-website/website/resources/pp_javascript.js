@@ -341,10 +341,6 @@ function addHandler() {
 		e.preventDefault();
 		handleUploadClick();
 	}, false);	
-	document.getElementById('snap_form').addEventListener("submit", function(e) {
-		e.preventDefault();
-		handleSnapClick();
-	}, false);
 }
 var myKeyboard = false;
 var touchEnabled = 0;
