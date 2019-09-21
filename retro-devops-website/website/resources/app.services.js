@@ -1,5 +1,5 @@
 ﻿function getAvailableDiskImages() {
-  var jsonFile = "uploads/fileList.json";
+  var jsonFile = "uploads/fileList.json?v=1";
 
   $.getJSON(jsonFile, function (data) {
     responseToSelectList(data);
