@@ -48,13 +48,24 @@ namespace retrodevsops.disks
             
                 // Create the CloudBlobClient that represents the Blob storage endpoint for the storage account.
                 CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();            
-                CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("c64-disks");
+                CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("$web");
             
                 BlobContinuationToken blobContinuationToken = null;
 
                 do
                 {
-                    var results = await cloudBlobContainer.ListBlobsSegmentedAsync(null, blobContinuationToken);
+                    // Get a list of the blobs in the container.
+                    // Specifiy the useFlatBlobListing option so we get subfolders too
+                    var results = await cloudBlobContainer.ListBlobsSegmentedAsync(
+                        prefix            : null,
+                        useFlatBlobListing: true, 
+                        blobListingDetails: BlobListingDetails.All,
+                        maxResults        : null,
+                        currentToken      : blobContinuationToken,
+                        options           : null,
+                        operationContext  : null
+                    );
+
                     // Get the value of the continuation token returned by the listing call.
                     blobContinuationToken = results.ContinuationToken;
 
@@ -62,21 +73,18 @@ namespace retrodevsops.disks
 
                     foreach (IListBlobItem item in results.Results)
                     {                    
-                    // if (item.Uri.IsFile) {
-                            //filename = System.IO.Path.GetFileName(item.Uri.LocalPath);
                             filename = System.IO.Path.GetFileName(item.Uri.LocalPath);
                             if(filename.EndsWith(".d64"))
                             {
                                 diskList.Add(new C64Disk{displayName = filename, fileName = item.Uri.ToString()});
                             }
-                    //  }     
                     }
                 } while (blobContinuationToken != null); // Loop while the continuation token is not null.
 
                 var json = JsonConvert.SerializeObject(diskList, Formatting.Indented);
 
                 // write a blob to the container
-                CloudBlockBlob blob = cloudBlobContainer.GetBlockBlobReference("fileList.json");
+                CloudBlockBlob blob = cloudBlobContainer.GetBlockBlobReference("uploads/fileList.json");
                 blob.UploadTextAsync(json.ToString()).Wait();
             }
             else
