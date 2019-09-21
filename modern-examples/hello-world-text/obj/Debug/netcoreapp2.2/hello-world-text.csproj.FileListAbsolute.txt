@@ -1,0 +1,11 @@
+C:\projects\c64\retro-devops\modern-examples\hello-world-text\bin\Debug\netcoreapp2.2\hello-world-text.deps.json
+C:\projects\c64\retro-devops\modern-examples\hello-world-text\bin\Debug\netcoreapp2.2\hello-world-text.runtimeconfig.json
+C:\projects\c64\retro-devops\modern-examples\hello-world-text\bin\Debug\netcoreapp2.2\hello-world-text.runtimeconfig.dev.json
+c:\projects\c64\retro-devops\modern-examples\hello-world-text\bin\Debug\netcoreapp2.2\hello-world-text.dll
+c:\projects\c64\retro-devops\modern-examples\hello-world-text\bin\Debug\netcoreapp2.2\hello-world-text.pdb
+c:\projects\c64\retro-devops\modern-examples\hello-world-text\obj\Debug\netcoreapp2.2\hello-world-text.csprojAssemblyReference.cache
+c:\projects\c64\retro-devops\modern-examples\hello-world-text\obj\Debug\netcoreapp2.2\hello-world-text.csproj.CoreCompileInputs.cache
+c:\projects\c64\retro-devops\modern-examples\hello-world-text\obj\Debug\netcoreapp2.2\hello-world-text.AssemblyInfoInputs.cache
+c:\projects\c64\retro-devops\modern-examples\hello-world-text\obj\Debug\netcoreapp2.2\hello-world-text.AssemblyInfo.cs
+c:\projects\c64\retro-devops\modern-examples\hello-world-text\obj\Debug\netcoreapp2.2\hello-world-text.dll
+c:\projects\c64\retro-devops\modern-examples\hello-world-text\obj\Debug\netcoreapp2.2\hello-world-text.pdb
