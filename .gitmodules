@@ -1,0 +1,3 @@
+[submodule "retro-devops-website/retro-blog/themes/terminal"]
+	path = retro-devops-website/retro-blog/themes/terminal
+	url = https://github.com/panr/hugo-theme-terminal.git
