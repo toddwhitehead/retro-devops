@@ -57,7 +57,7 @@ namespace retrodevsops.disks
                     // Get a list of the blobs in the container.
                     // Specifiy the useFlatBlobListing option so we get subfolders too
                     var results = await cloudBlobContainer.ListBlobsSegmentedAsync(
-                        prefix            : null,
+                        prefix            : "uploads",
                         useFlatBlobListing: true, 
                         blobListingDetails: BlobListingDetails.All,
                         maxResults        : null,
@@ -76,7 +76,7 @@ namespace retrodevsops.disks
                             filename = System.IO.Path.GetFileName(item.Uri.LocalPath);
                             if(filename.EndsWith(".d64"))
                             {
-                                diskList.Add(new C64Disk{displayName = filename, fileName = item.Uri.ToString()});
+                                diskList.Add(new C64Disk{displayName = filename, fileName = filename, uri = item.Uri.ToString()});
                             }
                     }
                 } while (blobContinuationToken != null); // Loop while the continuation token is not null.
@@ -104,6 +104,8 @@ namespace retrodevsops.disks
     {
         public string displayName { get; set; }
         public string fileName { get; set; }
+
+        public string uri { get; set; }
     }
 
 }
