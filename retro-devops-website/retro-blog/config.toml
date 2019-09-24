@@ -52,7 +52,6 @@ enableRobotsTXT = true
         identifier = "introduction"
         name = "Introduction"
         url = "/c64.html"
-    [languages.en.menu]
       [[languages.en.menu.main]]
         identifier = "c64emulator"
         name = "Online C64"
