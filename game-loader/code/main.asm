@@ -38,7 +38,7 @@
 ;============================================================
 
 irq        dec $d019        ; acknowledge IRQ / clear register for next interrupt
-           ;inc $D020
+           inc $D020
            jsr colwash      ; jump to color cycling routine
            jsr play_music	  ; jump to play music routine
         
