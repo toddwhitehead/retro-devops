@@ -1,1 +1,1 @@
-Source code for game loader demo used in retro devops demo
+This version has full text, colour and sound enabled, it is the version we will use for the devops build and release demo
