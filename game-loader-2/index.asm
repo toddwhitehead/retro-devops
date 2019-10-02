@@ -1,29 +1,21 @@
 ;=======================================
-;assemble it!
-;
-;intro programming
-
+; Retro Devops
+; Hello World 80's Style
+; 
+; Based on the great tutorials at http://tnd64.unikat.sk/assemble_it.html
 ;=======================================
 
-;=======================================
-
-;call out some variables and positions
-;for those variables
-*= $0801                               ; BASIC start address (#2049)
+; Basic loader so the demo can start when you type run
+*= $0801                                ; BASIC start address (#2049)
 !byte $0d,$08,$dc,$07,$9e,$20,$34,$39   ; BASIC loader to start at $c000...
 !byte $31,$35,$32,$00,$00,$00           ; puts BASIC line 2012 SYS 49152
-    				            ; start address for 6502 code
+    				        ; start address for 6502 code
 
-
-scrollpos = $2700 ;this is where the
-                  ;scrolltext will be
+;call out some variables and positions for those variables
+scrollpos = $2700 ;this is where the scrolltext will be
                   ;read from memory
 
-scrreel  = $0330;the scroll control
-
-;line1    = $2600  ;this is where we
-;line2    = $2620  ;have the 1 liner
-
+scrreel  = $0330 ;the scroll control
 flashdat1 = $2400
 flashdat2 = $2500
 
@@ -39,8 +31,6 @@ flashdat2 = $2500
                          ;restarts at
                          ;$2700
 
-;you probably might already have known
-;this part of the tutorial where we
 ;set up the charset and then blank the
 ;screen using - lda #$20 -, #$20
 ;represents spacebar.
@@ -95,12 +85,6 @@ linemesg lda line1,x ;copy the text from
 
 ;set up the irq raster interrupt player
 ;routines
-
-;since you already know how this section
-;works, and we done this many times,
-;there will be no need any explanation
-;for this part of the code
-
          lda #<int
          sta $0314
          lda #>int
@@ -124,11 +108,7 @@ linemesg lda line1,x ;copy the text from
 int      inc $d019
 
 ;this is where we read all the flashing
-;datas. this is something you may have
-;already known in an earlier part of the
-;assemble it tutorial. so no explanation
-;or help required in this section.
-
+;datas. 
          lda flashdat1+$00
          sta flashdat1+$50
          lda flashdat1+$80
@@ -185,8 +165,7 @@ flash2   lda flashdat2+$00,y
          cpy #40
          bne flash2
 
-;our raster screen cuts (do you remember
-;these :))
+;our raster screen cuts to divide areas of the screen
 
          lda #$7c
 raster1  cmp $d012  ; perform cut
@@ -267,25 +246,20 @@ msg      lda $0607   ;check $0607 (the
          sta msg+2       ;will restart
          jmp msg         ;then jump msg
 
-end      sta $0607 ;place character,
-                   ;read from scrollpos
+end      sta $0607 ;place character, read from scrollpos
          ora #$40  ;calculate half cset
          sta $062f ;place other half of
                    ;cset at bottom
 
-         inc msg+1 ;increment msg+1 by
-         lda msg+1 ;one character so
-                   ;that it will read
-                   ;the next character
-                   ;for the message in
-                   ;memory
+         inc msg+1 ;increment msg+1 by one character so
+         lda msg+1 ;that it will read the next character
+                   ;for the message in memory
 
-         cmp #$00  ;is the reset counter
-                   ;('@') marked? if not
+         cmp #$00  ;is the reset counter ('@') marked? if not
                    ;then jump to control
-
          bne control
          inc msg+2 ;do the same for the
+
 control  iny       ;next message counter
 
          cpy #$02  ;speed of our scroll
@@ -293,8 +267,6 @@ control  iny       ;next message counter
          rts
 
 ;end!
-
-;NOTE: DASM users, use incbin, ACME users use !BIN or !BINARY instead
 
 ;Insert music:
 	*= $1000-2
@@ -319,7 +291,4 @@ control  iny       ;next message counter
         !scr "  greetings ndc sydney - do devops - "
         !scr "deliver value - be excellent to each other - "               
         !byte 0 ;SETS @  
-
-
-
 ;END
