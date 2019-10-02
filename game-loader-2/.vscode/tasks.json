@@ -7,7 +7,7 @@
             "label": "Assemble -> C64",
             "type": "shell",
             "windows": {
-                "command": "acme -f cbm -l labels -o gameloader2.prg index.asm && C:/projects/c64/vice/x64sc.exe -moncommands labels gameloader2.prg"
+                "command": "acme -f cbm -l labels -o build/gameloader2.prg index.asm && C:/projects/c64/vice/x64sc.exe -moncommands labels build/gameloader2.prg"
             },
             "group": "build",
             "presentation": {
@@ -28,7 +28,7 @@
             "label": "Assemble -> Compress -> C64",
             "type": "shell",
             "windows": {
-                "command": "acme -f cbm -l labels -o gameloader2.prg index.asm && bin\\pucrunch gameloader2.prg gameloader2.prg && C:/projects/c64/vice/x64sc.exe -moncommands labels gameloader2.prg",
+                "command": "acme -f cbm -l labels -o build/gameloader2.prg index.asm && bin\\pucrunch build/gameloader2.prg build/gameloader2.prg && C:/projects/c64/vice/x64sc.exe -moncommands labels build/gameloader2.prg",
             },
             "group": {
                 "kind": "build",
@@ -52,7 +52,7 @@
             "label": "Assemble -> Compress",
             "type": "shell",
             "windows": {
-                "command": "acme -f cbm -l labels -o gameloader2.prg index.asm && bin\\pucrunch gameloader2.prg gameloader2.prg",
+                "command": "acme -f cbm -l labels -o build/gameloader2.prg index.asm && bin\\pucrunch build/gameloader2.prg build/gameloader2.prg",
             },
             "group": {
                 "kind": "build",

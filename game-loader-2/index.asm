@@ -284,7 +284,7 @@ control  iny       ;next message counter
 	
 	*= $2600-2  
         line1 !scr "   hello world      "
-        line2 !scr "   1908s style      "
+        line2 !scr "   1980's style     "
 
 ;Insert scrolltext data
 	*= $2700-2
